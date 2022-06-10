@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements
         DrivingSession.DrivingRouteListener {
     private MapView mapView;
     private static final int REQUEST_LOCATION = 11;
+    private final String MAPKIT_API_KEY = "98839261-0880-40da-acd8-656475aa99ab";
     private UserLocationLayer userLocationLayer;
     private final Point ROUTE_START_LOCATION = new Point(55.670005, 37.479894);
     private final Point ROUTE_END_LOCATION = new Point(55.794229, 37.700772);
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String MAPKIT_API_KEY = "98839261-0880-40da-acd8-656475aa99ab";
         MapKitFactory.setApiKey(MAPKIT_API_KEY);
         MapKitFactory.initialize(this);
         DirectionsFactory.initialize(this);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements
 
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.getMap().move(new CameraPosition(
-                SCREEN_CENTER, 5, 0, 0));
+                SCREEN_CENTER, 10, 0, 0));
         drivingRouter = DirectionsFactory.getInstance().createDrivingRouter();
         mapObjects = mapView.getMap().getMapObjects().addCollection();
 
